@@ -14,7 +14,6 @@ public class SampleTest extends BaseTest{
     //(timeout = 180000)
     public void testAuthorizationViaEmail() throws Exception {
         // переход на базовый урл
-     getDriver("Chrome");
      driver.get(URL);
      getDriver("FF");
      driver.get(URL);

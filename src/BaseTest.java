@@ -1,4 +1,3 @@
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
@@ -6,6 +5,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import src.ru.esteru.selenium.factory.WebDriverFactory;
 
 import java.net.MalformedURLException;
+import java.util.Calendar;
+import java.util.Random;
 
 /**
  * Created by ko4 on 12.06.2014.
@@ -80,7 +81,13 @@ public class BaseTest {
     }
 
     public BaseTest (){
-
+        strDriver = "Chrome";
+        setDriver(strDriver);
+        try {
+            driver = new WebDriverFactory().getDriver(cpb);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
     public void getDriver(){
         setDriver(strDriver);
@@ -98,5 +105,34 @@ public class BaseTest {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String[] generateRandomDate(boolean over16){
+        int  a;
+        //int maxDate = 12784; //01.01.2005 in Unix Time divide on 86400 = (1000msec*60sec*60min*24hours)
+        Calendar cal = Calendar.getInstance();
+        long today = (cal.getTimeInMillis()/(1000*60*60*24));
+        cal.add(Calendar.YEAR,-16);
+        long targetDate = (cal.getTimeInMillis()/(1000*60*60*24));
+        Random rnd = new Random();
+        if (over16){
+            a = rnd.nextInt((int)targetDate);
+        } else {
+            a = rnd.nextInt((int)((today-targetDate)+targetDate));
+        }
+        /*if (a % 30 == 0) {
+            String randomDate[] = {"-", "-", ""};
+            return randomDate;
+        }*/
+        long index = (long)a*1000*86400;
+        Calendar mydate = Calendar.getInstance();
+        mydate.setTimeInMillis(index);
+        mydate.getTimeInMillis();
+        String months[] = {"январь", "февраль","март", "апрель", "май", "июнь", "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"};
+        String bDay = (""+mydate.get(Calendar.DAY_OF_MONTH));
+        String bMonth = (months[mydate.get(Calendar.MONTH)]);
+        String bYear = (""+mydate.get(Calendar.YEAR));
+        String randomDate[] = {bDay,bMonth, bYear};
+        return randomDate;
     }
 }
