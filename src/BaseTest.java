@@ -81,13 +81,7 @@ public class BaseTest {
     }
 
     public BaseTest (){
-        strDriver = "Chrome";
-        setDriver(strDriver);
-        try {
-            driver = new WebDriverFactory().getDriver(cpb);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+
     }
     public void getDriver(){
         setDriver(strDriver);
