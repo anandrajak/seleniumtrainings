@@ -1,4 +1,4 @@
-package src.ru.esteru.selenium.factory;
+package ru.esteru.selenium.factory;
 
 import com.opera.core.systems.OperaDriver;
 import org.openqa.selenium.Capabilities;

@@ -2,7 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import src.ru.esteru.selenium.factory.WebDriverFactory;
+import ru.esteru.selenium.factory.WebDriverFactory;
 
 import java.net.MalformedURLException;
 import java.util.Calendar;
